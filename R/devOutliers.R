@@ -10,7 +10,7 @@
 
 
 #' @title Get Environnemental Data and events
-#'
+#' @importFrom magrittr %>%
 #'
 #' @param scientificObjectURI,
 #' @param startDate
