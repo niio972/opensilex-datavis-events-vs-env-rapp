@@ -1,9 +1,9 @@
 # function available minimum required
 availableFunctions:
-  - plotVarDemo
+  - eventVSEnvironmental
 integratedFunctions:
   # web client integrated function configuration
   plotVarDemo:
     description: |
-      A demo app that help you to compare two variables
-    label: "Compare two variables"
+      A demo app that help you to compare wind data with field events
+    label: "Compare environmental data with events"
