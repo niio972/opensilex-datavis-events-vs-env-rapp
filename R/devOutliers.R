@@ -32,7 +32,6 @@ eventData=phisWSClientR::getEvents(
   dateRangeStart = paste0(startDate,"T00:00:00+0100"),
   dateRangeEnd = paste0(endDate,"T00:00:00+0100") )$data
 
-library(dplyr)
 
 eventDataProcessed <- eventData %>%
   filter(date > as.Date(startDate)) %>%
