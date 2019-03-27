@@ -27,13 +27,13 @@ function getInputs() {
 
   // input parameters in the form of the R function
   var scientificObject = $("#scientificObject").val();
-  var dateEnd = $("#endDate").val();
+  var endDate = $("#endDate").val();
   var startDate = $("#startDate").val();
   var showPoint = $("#showPoint").prop("checked");
 
   functionsParameters = {
     scientificObject: scientificObject,
-    dateEnd: dateEnd,
+    endDate: endDate,
     startDate: startDate,
     showPoint: showPoint,
   };
