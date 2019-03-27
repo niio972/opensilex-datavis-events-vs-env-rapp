@@ -82,19 +82,20 @@ eventVSEnvironmental <- function(scientificObjectURI, startDate ="", endDate="",
   events <-data.frame(date = EVdate, value = EVname)
 
   # create ggplot plot
-  p <- ggplot2::ggplot(dataToShow, ggplot2::aes(date,value))
+  p <- ggplot2::ggplot()
   if(showPoint == TRUE){
     p <- p + ggplot2::geom_point(colour="blue", size = 0.2)
   }
     # ggplot2::geom_point(colour="blue", size = 0.2) +
   p <-p + ggplot2::geom_point(data=outliers, ggplot2::aes(x=date, y=value), colour="red", size=2) +
-    ggplot2::stat_smooth(method = "gam", formula = y ~ s(x), size = 1, colour = "green" ,n = 160) +
+    ggplot2::stat_smooth(data = dataToShow, ggplot2::aes(date,value), method = "gam", formula = y ~ s(x), size = 1, colour = "green" ,n = 160) +
     # ggplot2::geom_segment(data = events, mapping=ggplot2::aes(x=date, y=0.5, xend=date, yend=0.5)) +
     # ggplot2::geom_point(data = events, mapping=ggplot2::aes(x=date,y=0.5), size=3) +
     ggplot2::geom_text(data = events, mapping=ggplot2::aes(x=date, y=0.5, label=value), hjust=-0.1, vjust=0.1, size=5) +
     ggplot2::ylab("Wind (m.s)") + ggplot2::xlab("Date (hourly)")
   p <- plotly::ggplotly(p)
   p
+  # export for Opensilex
   htmlwidgets::saveWidget(p,file = "plotWidget.html",selfcontained = FALSE)
 }
 
