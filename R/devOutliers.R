@@ -6,12 +6,33 @@
 #                  repos=NULL,
 #                  type ="source")
 
-# startDate ="2017-05-22"
-# endDate ="2017-06-30"
-# pageSize=20000
-# scientificObjectURI="http://www.opensilex.org/demo/2018/o18000175"
 
 
+
+#' @title Get Environnemental Data and events
+#'
+#'
+#' @param scientificObjectURI,
+#' @param startDate
+#' @param endDate
+#' @param pageSize
+#' @param variableList from \code{\link{variableList}}
+#' @param token a token from \code{\link{getToken}} function
+#'
+#' @return plot
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' initializeClientConnection(apiID="ws_private", url = "www.opensilex.org/openSilexAPI/rest/")
+#'  aToken <- getToken("guest@opensilex.org","guest")
+#'  token <- aToken$data
+#'  startDate ="2017-05-22"
+#'  endDate ="2017-06-30"
+#'  pageSize=20000
+#'  scientificObjectURI="http://www.opensilex.org/demo/2018/o18000175"
+#'  eventVSEnvironmental(scientificObjectURI, startDate, endDate,pageSize)
+#' }
 eventVSEnvironmental <- function(scientificObjectURI, startDate ="", endDate="", showPoint = FALSE, pageSize = 1000){
 # gathering envrionmental data (wind)
 phisWSClientR::initializeClientConnection(apiID="ws_private", url = "www.opensilex.org/openSilexAPI/rest/")
@@ -75,7 +96,6 @@ p <-p + ggplot2::geom_point(data=outliers, ggplot2::aes(x=date, y=value), colour
   ggplot2::geom_text(data = events, mapping=ggplot2::aes(x=date, y=0.5, label=value), hjust=-0.1, vjust=0.1, size=5)
 
 p <- plotly::ggplotly(p)
-p
+htmlwidgets::saveWidget(p,file = "plotWidget.html",selfcontained = FALSE)
 }
 
-# eventVSEnvironmental(scientificObjectURI, startDate, endDate,pageSize)
