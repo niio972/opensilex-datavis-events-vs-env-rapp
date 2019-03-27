@@ -31,10 +31,6 @@ function getInputs() {
   var startDate = $("#startDate").val();
   var showPoint = $("#showPoint").prop("checked");
 
-  if (varURIs == null || varURIs.length == 0) {
-    alert("you must choose at least one variable");
-    return false;
-  }
   functionsParameters = {
     scientificObject: scientificObject,
     dateEnd: dateEnd,
