@@ -11,7 +11,7 @@
 $(function() {
   // Comment for production case
   // ocpu.seturl("http://opensilex.org:8004/ocpu/apps/OpenSILEX/compareVariablesDemo/R");
-
+  initInputs();
   // show graph button
   $("#submit").click(function(e) {
     e.preventDefault();
@@ -22,7 +22,13 @@ $(function() {
   });
 });
 
+// use datepicker function to select date
+function initInputs() {
+  setDateInput("startDate", { dateFormat: "yy-mm-dd" });
+  setDateInput("endDate", { dateFormat: "yy-mm-dd" });
+}
 
+// retreive the parameters
 function getInputs() {
 
   // input parameters in the form of the R function
