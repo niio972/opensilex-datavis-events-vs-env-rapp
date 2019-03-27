@@ -1,0 +1,9 @@
+# function available minimum required
+availableFunctions:
+  - plotVarDemo
+integratedFunctions:
+  # web client integrated function configuration
+  plotVarDemo:
+    description: |
+      A demo app that help you to compare two variables
+    label: "Compare two variables"

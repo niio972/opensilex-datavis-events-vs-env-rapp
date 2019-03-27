@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>OpenSILEX -R app demo</title>
+    <!-- style -->
+    <!-- fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"">
+    <!-- select2 -->
+    <link href="css/select2.min.css" rel="stylesheet" />
+    <!-- jquery ui -->
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <!-- css loader -->
+    <link rel="stylesheet" href="css/css-loader.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<div id="cssLoader" class="loader loader-default" data-text="Loading"></div>
+
+<body>
+    <div class="wrap">
+        <div class="container-fluid">
+            <h2 >Demo Application - Variable data comparison</h2>
+            <br>
+            <div class="col-md-12">
+                <!-- form -->
+                <form role="form">
+                    <div id="inputForm">
+                        <!-- token -->
+                        <div class="form-group">
+                            <strong>
+                                <label for="scientificObject"> Scientific Object </label>
+                            </strong>
+                            <input class="form-control" type="text" id="scientificObject" name="scientificObject" value="http://www.opensilex.org/demo/2018/o18000175" />
+                        </div>
+                        <div class="form-inline">
+                            <label for="startDate">Start date:</label>
+                            <input class="form-control" type="text" id="startDate" name="startDate" value="2017-05-22" />
+                            <label for="endDate">End date:</label>
+                            <input class="form-control" type="text" id="endDate" name="endDate" value="2017-06-30"/>
+                        </div>
+                        <label for="showPoint">showPoint</label>
+                        <input type="checkbox" id="showPoint" name="showPoint" >
+                       
+                        <!-- submit -->
+                        <div class="form-group"></div>
+                        <button id="submit" type="submit" class="btn btn-primary">
+                            Show graph!
+                        </button>
+                        <hr>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- plotDiv -->
+    <div class="embed-responsive embed-responsive-4by3">
+        <iframe class="embed-responsive-item" id="plotDiv" allowfullscreen></iframe>
+    </div>
+    
+    <!-- jquery -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/select2.min.js"></script>
+    <!-- opencpu client -->
+    <script src="js/opencpu-0.5.js"></script>
+    <script src="js/opensilex.js"></script>
+    <!-- user script -->
+    <script src="js/app.js"></script>
+    
+</body>
+
+</html>
