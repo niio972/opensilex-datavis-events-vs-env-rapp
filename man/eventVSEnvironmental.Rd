@@ -14,11 +14,11 @@ eventVSEnvironmental(scientificObjectURI, startDate = "", endDate = "",
 
 \item{endDate}{the end of the period}
 
+\item{showPoint}{show points
+#@param variableList from \code{\link{variableList}}
+#@param token a token from \code{\link{getToken}} function}
+
 \item{pageSize}{the size of data retreived by default 1000 measures}
-
-\item{variableList}{from \code{\link{variableList}}}
-
-\item{token}{a token from \code{\link{getToken}} function}
 }
 \value{
 plot
@@ -35,6 +35,7 @@ initializeClientConnection(apiID="ws_private", url = "www.opensilex.org/openSile
  endDate ="2017-06-30"
  pageSize=20000
  scientificObjectURI="http://www.opensilex.org/demo/2018/o18000175"
- eventVSEnvironmental(scientificObjectURI, startDate, endDate,pageSize)
+ showPoint = FALSE
+ envEvents::eventVSEnvironmental(scientificObjectURI, startDate, endDate,showPoint,pageSize)
 }
 }

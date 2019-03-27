@@ -13,9 +13,9 @@
 #' @param startDate the begining of the period
 #' @param endDate the end of the period
 #' @param pageSize the size of data retreived by default 1000 measures
-#' @param variableList from \code{\link{variableList}}
-#' @param token a token from \code{\link{getToken}} function
-#'
+#' @param showPoint show points
+#' #@param variableList from \code{\link{variableList}}
+#' #@param token a token from \code{\link{getToken}} function
 #' @return plot
 #' @export
 #'
@@ -28,7 +28,8 @@
 #'  endDate ="2017-06-30"
 #'  pageSize=20000
 #'  scientificObjectURI="http://www.opensilex.org/demo/2018/o18000175"
-#'  eventVSEnvironmental(scientificObjectURI, startDate, endDate,pageSize)
+#'  showPoint = FALSE
+#'  envEvents::eventVSEnvironmental(scientificObjectURI, startDate, endDate,showPoint,pageSize)
 #' }
 eventVSEnvironmental <- function(scientificObjectURI, startDate ="", endDate="", showPoint = FALSE, pageSize = 1000){
   # gathering envrionmental data (wind)
@@ -52,8 +53,8 @@ eventVSEnvironmental <- function(scientificObjectURI, startDate ="", endDate="",
 
 
   eventDataProcessed <- eventData %>%
-    filter(date > as.Date(startDate)) %>%
-    filter(date < as.Date(endDate))
+    dplyr::filter(date > as.Date(startDate)) %>%
+    dplyr::filter(date < as.Date(endDate))
 
   #create dataframe which represents environmental values
   dataToShow <- data
@@ -66,7 +67,7 @@ eventVSEnvironmental <- function(scientificObjectURI, startDate ="", endDate="",
 
   # create gam model
   model <- mgcv::gam(value ~ s(dateVector), data = dataToShow)
-  selector <- abs(model$residuals) >= min(abs(boxplot.stats(model$residuals)$out))
+  selector <- abs(model$residuals) >= min(abs(grDevices::boxplot.stats(model$residuals)$out))
   outliers <- dataToShow[selector, ]
 
   # fromat event informations
